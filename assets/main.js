@@ -22,7 +22,7 @@ async function fetchData(urlApi) {
     const videos = await fetchData(API);
     let view = `
 		${videos.items
-      .map(
+      .map( // Este map lo utilizamos para recorrer el arreglo y traer exactamente los videos
         (video) =>
           `
 			<div class="group relative">
@@ -33,16 +33,16 @@ async function fetchData(urlApi) {
 				<div class="mt-4 flex justify-between">
 					<h3 class="text-sm text-gray-700">
 						<span aria-hidden="true" class="absolute inset-0"></span>
-						${video.snippet.title}
+						${video.snippet.title} 
 					</h3>
 				</div>
 			</div>
 			`
       )
-      .slice(0, 4)
-      .join("")}		
+      .slice(0, 4) // Traemos los perimeros 4 elementos o 4 videos. Los unimos con este join para mostrarlos finalmente en pantalla
+      .join("")}		 
 			`;
-    	content.innerHTML = view;
+    	content.innerHTML = view; // Agregamos todo lo que implementamos en el queryselector content y lo unimos con view
   } catch (error) {
     console.log(error);
   }
